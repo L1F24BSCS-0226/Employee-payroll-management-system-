@@ -1,0 +1,588 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	const int size = 100;
+	int Employee_ID[size];
+	float Hours_Worked[size];
+	float Hourly_Rate[size];
+	float Gross_Salary[size];
+	float Tax_Deduction[size];
+	float Net_Salary[size];
+	char ch[3];
+	int current = 50;
+	int index;
+	for (int i = 0; i < size / 2; i++)//adding pre populated data
+	{
+		Employee_ID[i] = 100 + i;//assign unique employee id
+		Hours_Worked[i] = 50 + (i % 10);//randomize assign hours worked between 50 and 59
+		Hourly_Rate[i] = 10.0 + (i % 10);//Randomize assign hours rate between 10 and 19
+		Gross_Salary[i] = Hours_Worked[i] * Hourly_Rate[i];//calculate Gross salary
+		Tax_Deduction[i] = Gross_Salary[i] * 0.1;//Assuming 10% Tax is deducted
+		Net_Salary[i] = Gross_Salary[i] - Tax_Deduction[i];//calculating net salary
+
+	}
+	do
+	{
+		cout << "---Employee payroll management system---" << endl;//display a main menu
+		cout << "1. Sort and Display all Records by Employee ID (Ascending)\n2. Sort and Display all Records by Employee ID(Descending)\n3. Sort and Display all Records by Gross Salary(Ascending)\n4. Sort and Display all Records by Gross Salary(Descending)\n5. Add a New Employee Payroll Record\n6. Delete an Employee Payroll Record Based on Employee ID\n7. Display Employees with Net Salary Greater than or Equal to X(Descending)\n8. Display Employees with Net Salary Greater than or Equal to X(Ascending)\n9. Display Employees with Net Salary Less than X(Descending)\n10. Display Employees with Net Salary Less than X(Ascending)\n11. Update Hours Worked or Hourly Rate for an Employee Based on Employee ID\nEnter E or e For Exit" << endl;
+		cout << "Please Enter Your Choice= ";
+		cin >> ch;
+
+
+		if (ch[0] == '1' && ch[1] == '\0')//Sort and Display all Records by Employee ID (Ascending)
+		{//all modules is sorted by bubble sorting technique
+			for (int i = 0; i < current; i++)//sort Employee Id(Ascending)
+			{
+				for (int j = 0; j < current - i - 1; j++)
+				{
+					if (Employee_ID[j] > Employee_ID[j + 1])
+					{
+						int temp = Employee_ID[j];
+						Employee_ID[j] = Employee_ID[j + 1];
+						Employee_ID[j + 1] = temp;
+						//sort Hours worked(Ascending)
+
+						float temp1 = Hours_Worked[j];
+						Hours_Worked[j] = Hours_Worked[j + 1];
+						Hours_Worked[j + 1] = temp1;
+						//sort hours rate(Ascending)
+						temp1 = Hourly_Rate[j];
+						Hourly_Rate[j] = Hourly_Rate[j + 1];
+						Hourly_Rate[j + 1] = temp1;
+						//sort gross salary (Ascending)
+						temp1 = Gross_Salary[j];
+						Gross_Salary[j] = Gross_Salary[j + 1];
+						Gross_Salary[j + 1] = temp1;
+						//sort Tax deduction (Ascending)
+						temp1 = Tax_Deduction[j];
+						Tax_Deduction[j] = Tax_Deduction[j + 1];
+						Tax_Deduction[j + 1] = temp1;
+						//sort net salary(Ascending)
+						temp1 = Net_Salary[j];
+						Net_Salary[j] = Net_Salary[j + 1];
+						Net_Salary[j + 1] = temp1;
+					}
+				}
+			}
+			//display the sorted data
+			cout << "Employee id\tHours Worked\tHourly Rate\tGross Salary\tTax Deduction\tNet salary" << endl;
+			for (int j = 0; j < current; j++)
+			{
+				cout << Employee_ID[j] << "\t\t";
+				cout << Hours_Worked[j] << " " << "\t\t";
+				cout << Hourly_Rate[j] << " " << "\t\t";
+				cout << Gross_Salary[j] << " " << "\t\t";
+				cout << Tax_Deduction[j] << " " << "\t\t";
+				cout << Net_Salary[j] << " " << endl;
+			}
+		}
+		else if (ch[0] == '2' && ch[1] == '\0')//Sort and Display all Records by Employee ID (Descending)
+		{//all modules is sorted by bubble sorting technique
+			for (int i = 0; i < current; i++)//sort Employee Id(Ascending)
+			{
+				for (int j = 0; j < current - i - 1; j++)
+				{
+					if (Employee_ID[j] < Employee_ID[j + 1])
+					{
+						int temp = Employee_ID[j];
+						Employee_ID[j] = Employee_ID[j + 1];
+						Employee_ID[j + 1] = temp;
+						//sort Hours worked(Ascending)
+
+						float temp1 = Hours_Worked[j];
+						Hours_Worked[j] = Hours_Worked[j + 1];
+						Hours_Worked[j + 1] = temp1;
+						//sort hours rate(Ascending)
+						temp1 = Hourly_Rate[j];
+						Hourly_Rate[j] = Hourly_Rate[j + 1];
+						Hourly_Rate[j + 1] = temp1;
+						//sort gross salary (Ascending)
+						temp1 = Gross_Salary[j];
+						Gross_Salary[j] = Gross_Salary[j + 1];
+						Gross_Salary[j + 1] = temp1;
+						//sort Tax deduction (Ascending)
+						temp1 = Tax_Deduction[j];
+						Tax_Deduction[j] = Tax_Deduction[j + 1];
+						Tax_Deduction[j + 1] = temp1;
+						//sort net salary(Ascending)
+						temp1 = Net_Salary[j];
+						Net_Salary[j] = Net_Salary[j + 1];
+						Net_Salary[j + 1] = temp1;
+					}
+				}
+			}
+			//display the sorted data
+			cout << "Employee id\tHours Worked\tHourly Rate\tGross Salary\tTax Deduction\tNet salary" << endl;
+			for (int j = 0; j < size / 2; j++)
+			{
+				cout << Employee_ID[j] << "\t\t";
+				cout << Hours_Worked[j] << " " << "\t\t";
+				cout << Hourly_Rate[j] << " " << "\t\t";
+				cout << Gross_Salary[j] << " " << "\t\t";
+				cout << Tax_Deduction[j] << " " << "\t\t";
+				cout << Net_Salary[j] << " " << endl;
+			}
+		}
+		else if (ch[0] == '3' && ch[1] == '\0')//Sort and Display all Records by Gross Salary (Ascending)
+		{//all modules is sorted by bubble sorting technique
+			for (int i = 0; i < current; i++)//sort data according to  Employee Id(Ascending)
+			{
+				for (int j = 0; j < current - i - 1; j++)
+				{
+					if (Gross_Salary[j] > Gross_Salary[j + 1])
+					{
+						float temp1 = Gross_Salary[j];
+						Gross_Salary[j] = Gross_Salary[j + 1];
+						Gross_Salary[j + 1] = temp1;
+
+
+						// Hours worked(Ascending)
+						temp1 = Hours_Worked[j];
+						Hours_Worked[j] = Hours_Worked[j + 1];
+						Hours_Worked[j + 1] = temp1;
+						//sort hours rate(Ascending)
+						temp1 = Hourly_Rate[j];
+						Hourly_Rate[j] = Hourly_Rate[j + 1];
+						Hourly_Rate[j + 1] = temp1;
+
+						int temp = Employee_ID[j];
+						Employee_ID[j] = Employee_ID[j + 1];
+						Employee_ID[j + 1] = temp;
+
+						//sort Tax deduction (Ascending)
+
+						temp1 = Tax_Deduction[j];
+						Tax_Deduction[j] = Tax_Deduction[j + 1];
+						Tax_Deduction[j + 1] = temp1;
+						//sort net salary(Ascending)
+						temp1 = Net_Salary[j];
+						Net_Salary[j] = Net_Salary[j + 1];
+						Net_Salary[j + 1] = temp1;
+					}
+				}
+			}
+			//display the sorted data
+			cout << "Employee id\tHours Worked\tHourly Rate\tGross Salary\tTax Deduction\tNet salary" << endl;
+			for (int j = 0; j < current; j++)
+			{
+				cout << Employee_ID[j] << "\t\t";
+				cout << Hours_Worked[j] << " " << "\t\t";
+				cout << Hourly_Rate[j] << " " << "\t\t";
+				cout << Gross_Salary[j] << " " << "\t\t";
+				cout << Tax_Deduction[j] << " " << "\t\t";
+				cout << Net_Salary[j] << " " << endl;
+			}
+		}
+		else if (ch[0] == '4' && ch[1] == '\0')//Sort and Display all Records by Gross Salary (Descending)
+		{//all modules is sorted by bubble sorting technique
+			for (int i = 0; i < current; i++)//sort Employee Id(Ascending)
+			{
+				for (int j = 0; j < current - i - 1; j++)
+				{
+					if (Gross_Salary[j] < Gross_Salary[j + 1])
+					{
+						float temp1 = Gross_Salary[j];
+						Gross_Salary[j] = Gross_Salary[j + 1];
+						Gross_Salary[j + 1] = temp1;
+
+						int temp = Employee_ID[j];
+						Employee_ID[j] = Employee_ID[j + 1];
+						Employee_ID[j + 1] = temp;
+						//sort Hours worked(Ascending)
+
+						temp1 = Hours_Worked[j];
+						Hours_Worked[j] = Hours_Worked[j + 1];
+						Hours_Worked[j + 1] = temp1;
+						//sort hours rate(Ascending)
+						temp1 = Hourly_Rate[j];
+						Hourly_Rate[j] = Hourly_Rate[j + 1];
+						Hourly_Rate[j + 1] = temp1;
+						//sort Tax deduction (Ascending)
+						temp1 = Tax_Deduction[j];
+						Tax_Deduction[j] = Tax_Deduction[j + 1];
+						Tax_Deduction[j + 1] = temp1;
+						//sort net salary(Ascending)
+						temp1 = Net_Salary[j];
+						Net_Salary[j] = Net_Salary[j + 1];
+						Net_Salary[j + 1] = temp1;
+					}
+				}
+			}
+			//display the sorted data
+			cout << "Employee id\tHours Worked\tHourly Rate\tGross Salary\tTax Deduction\tNet salary" << endl;
+			for (int j = 0; j < current; j++)
+			{
+				cout << Employee_ID[j] << "\t\t";
+				cout << Hours_Worked[j] << " " << "\t\t";
+				cout << Hourly_Rate[j] << " " << "\t\t";
+				cout << Gross_Salary[j] << " " << "\t\t";
+				cout << Tax_Deduction[j] << " " << "\t\t";
+				cout << Net_Salary[j] << " " << endl;
+			}
+		}
+		else if (ch[0] == '5' && ch[1] == '\0')//Add a New Employee Payroll Record
+		{
+			if (current < size)//check if the size/2 is less than size i.e,100
+			{
+				int id;//variable declaration
+				float hours_rate = 0, hours_worked = 0;//variable initialization
+				cout << "Enter a new Employee ID=";
+				cin >> id;
+				bool flag = false;
+				for (int i = 0; i < current; i++)//check the employee id that is present in the array or not
+				{
+					if (Employee_ID[i] == id)
+					{
+						flag = true;
+						break;
+					}
+
+
+				}
+				if (flag == true)//if present then display this
+				{
+					cout << "Person already exist!..." << endl;
+				}
+
+
+				else//if not present the enter a hours worked and hours rate
+				{
+					cout << "Enter Hours Worked=";
+					cin >> hours_worked;
+					cout << "Enter Hours Rate=";
+					cin >> hours_rate;
+
+					//adding new record
+					Employee_ID[current] = id;
+					Hours_Worked[current] = hours_worked;
+					Hourly_Rate[current] = hours_rate;
+					Gross_Salary[current] = hours_worked * hours_rate;
+					Tax_Deduction[current] = Gross_Salary[current] * 0.10;
+					Net_Salary[current] = Gross_Salary[current] - Tax_Deduction[current];
+					current++;//increasing the size of current
+					cout << "Record is Enter successfully\n";
+				}
+			}
+			else
+			{
+				cout << "Error!... Maximum limit reached\n";
+			}
+
+		}
+		else if (ch[0] == '6' && ch[1] == '\0')
+		{
+			int delete_employee_id;
+			cout << "Enter an employee id you want to delete=";
+			cin >> delete_employee_id;
+			bool found = true;
+			for (int i = 0; i < current; i++)
+			{
+				if (Employee_ID[i] == delete_employee_id)
+				{
+					found = false;
+					index = i;
+
+				}
+			}
+			if (found == false)
+			{
+				for (int j = index; j < current; j++)
+				{
+					Employee_ID[j] = Employee_ID[j + 1];
+					Hours_Worked[j] = Hours_Worked[j + 1];
+					Hourly_Rate[j] = Hourly_Rate[j + 1];
+					Gross_Salary[j] = Gross_Salary[j + 1];
+					Tax_Deduction[j] = Tax_Deduction[j + 1];
+					Net_Salary[j] = Net_Salary[j + 1];
+				}
+
+				current--;
+			}
+			cout << "Employee Record Successfully deleted!" << endl;
+			if (found == true)
+			{
+				cout << "Employee Does not Found!.." << endl;
+			}
+		}
+		else if (ch[0] == '7' && ch[1] == '\0')
+		{
+			float x;
+			cout << "Enter any number=";
+			cin >> x;
+			for (int i = 0; i < current; i++)//sort net salary (descending)
+			{
+				for (int j = 0; j < current - i - 1; j++)
+				{
+					if (Net_Salary[j] < Net_Salary[j + 1])
+					{
+						//sort net salary(descending)
+						float temp1 = Net_Salary[j];
+						Net_Salary[j] = Net_Salary[j + 1];
+						Net_Salary[j + 1] = temp1;
+
+						int temp = Employee_ID[j];
+						Employee_ID[j] = Employee_ID[j + 1];
+						Employee_ID[j + 1] = temp;
+						//sort Hours worked(descending)
+
+						temp1 = Hours_Worked[j];
+						Hours_Worked[j] = Hours_Worked[j + 1];
+						Hours_Worked[j + 1] = temp1;
+						//sort hours rate(descending)
+						temp1 = Hourly_Rate[j];
+						Hourly_Rate[j] = Hourly_Rate[j + 1];
+						Hourly_Rate[j + 1] = temp1;
+						//sort gross salary (descending)
+						temp1 = Gross_Salary[j];
+						Gross_Salary[j] = Gross_Salary[j + 1];
+						Gross_Salary[j + 1] = temp1;
+						//sort Tax deduction(descending)
+						temp1 = Tax_Deduction[j];
+						Tax_Deduction[j] = Tax_Deduction[j + 1];
+						Tax_Deduction[j + 1] = temp1;
+
+					}
+				}
+			}
+			//display the sorted data
+			cout << "Employee id\tHours Worked\tHourly Rate\tGross Salary\tTax Deduction\tNet salary" << endl;
+			for (int j = 0; j < current; j++)
+			{
+				if (Net_Salary[j] > x) {
+					cout << Employee_ID[j] << "\t\t";
+					cout << Hours_Worked[j] << " " << "\t\t";
+					cout << Hourly_Rate[j] << " " << "\t\t";
+					cout << Gross_Salary[j] << " " << "\t\t";
+					cout << Tax_Deduction[j] << " " << "\t\t";
+					cout << Net_Salary[j] << " " << endl;
+				}
+			}
+
+		}
+		else if (ch[0] == '8' && ch[1] == '\0')
+		{
+			float y;
+			cout << "Enter any number=";
+			cin >> y;
+			for (int i = 0; i < current; i++)//sort Employee Id(Ascending)
+			{
+				for (int j = 0; j < current - i - 1; j++)
+				{
+					if (Net_Salary[j] > Net_Salary[j + 1])
+					{
+						//sort net salary(Ascending)
+						float temp1 = Net_Salary[j];
+						Net_Salary[j] = Net_Salary[j + 1];
+						Net_Salary[j + 1] = temp1;
+
+						//sort Hours worked(Ascending)
+
+						temp1 = Hours_Worked[j];
+						Hours_Worked[j] = Hours_Worked[j + 1];
+						Hours_Worked[j + 1] = temp1;
+						//sort hours rate(Ascending)
+						temp1 = Hourly_Rate[j];
+						Hourly_Rate[j] = Hourly_Rate[j + 1];
+						Hourly_Rate[j + 1] = temp1;
+						//sort gross salary (Ascending)
+						temp1 = Gross_Salary[j];
+						Gross_Salary[j] = Gross_Salary[j + 1];
+						Gross_Salary[j + 1] = temp1;
+						//sort Tax deduction (Ascending)
+						temp1 = Tax_Deduction[j];
+						Tax_Deduction[j] = Tax_Deduction[j + 1];
+						Tax_Deduction[j + 1] = temp1;
+						int temp = Employee_ID[j];
+						Employee_ID[j] = Employee_ID[j + 1];
+						Employee_ID[j + 1] = temp;
+						//sort net salary(Ascending)
+						temp1 = Net_Salary[j];
+						Net_Salary[j] = Net_Salary[j + 1];
+						Net_Salary[j + 1] = temp1;
+					}
+				}
+			}
+
+			//display the sorted data
+			cout << "Employee id\tHours Worked\tHourly Rate\tGross Salary\tTax Deduction\tNet salary" << endl;
+			for (int j = 0; j < size / 2; j++)
+			{
+				if (Net_Salary[j] >= y)
+				{
+					cout << Employee_ID[j] << "\t\t";
+					cout << Hours_Worked[j] << " " << "\t\t";
+					cout << Hourly_Rate[j] << " " << "\t\t";
+					cout << Gross_Salary[j] << " " << "\t\t";
+					cout << Tax_Deduction[j] << " " << "\t\t";
+					cout << Net_Salary[j] << " " << endl;
+				}
+			}
+
+		}
+		else if (ch[0] == '9' && ch[1] == '\0')
+		{
+			float z;
+			cout << "Enter any Number=";
+			cin >> z;
+			for (int i = 0; i < current; i++)//sort net salary (descending)
+			{
+				for (int j = 0; j < current - i - 1; j++)
+				{
+					if (Net_Salary[j] < Net_Salary[j + 1])
+					{
+						//sort net salary(descending)
+						float temp1 = Net_Salary[j];
+						Net_Salary[j] = Net_Salary[j + 1];
+						Net_Salary[j + 1] = temp1;
+
+						int temp = Employee_ID[j];
+						Employee_ID[j] = Employee_ID[j + 1];
+						Employee_ID[j + 1] = temp;
+						//sort Hours worked(descending)
+
+						temp1 = Hours_Worked[j];
+						Hours_Worked[j] = Hours_Worked[j + 1];
+						Hours_Worked[j + 1] = temp1;
+						//sort hours rate(descending)
+						temp1 = Hourly_Rate[j];
+						Hourly_Rate[j] = Hourly_Rate[j + 1];
+						Hourly_Rate[j + 1] = temp1;
+						//sort gross salary (descending)
+						temp1 = Gross_Salary[j];
+						Gross_Salary[j] = Gross_Salary[j + 1];
+						Gross_Salary[j + 1] = temp1;
+						//sort Tax deduction(descending)
+						temp1 = Tax_Deduction[j];
+						Tax_Deduction[j] = Tax_Deduction[j + 1];
+						Tax_Deduction[j + 1] = temp1;
+
+					}
+				}
+			}
+			//display the sorted data
+			cout << "Employee id\tHours Worked\tHourly Rate\tGross Salary\tTax Deduction\tNet salary" << endl;
+			for (int j = 0; j < current; j++)
+			{
+				if (Net_Salary[j] < z) {
+					cout << Employee_ID[j] << "\t\t";
+					cout << Hours_Worked[j] << " " << "\t\t";
+					cout << Hourly_Rate[j] << " " << "\t\t";
+					cout << Gross_Salary[j] << " " << "\t\t";
+					cout << Tax_Deduction[j] << " " << "\t\t";
+					cout << Net_Salary[j] << " " << endl;
+				}
+			}
+
+		}
+		else if (ch[0] == '1' && ch[1] == '0' && ch[2] == '\0')
+		{
+			float a;
+			cout << "Enter any number=";
+			cin >> a;
+			for (int i = 0; i < current; i++)//sort Employee Id(Ascending)
+			{
+				for (int j = 0; j < current - i - 1; j++)
+				{
+					if (Net_Salary[j] > Net_Salary[j + 1])
+					{
+						//sort net salary(Ascending)
+						float temp1 = Net_Salary[j];
+						Net_Salary[j] = Net_Salary[j + 1];
+						Net_Salary[j + 1] = temp1;
+
+						//sort Hours worked(Ascending)
+
+						temp1 = Hours_Worked[j];
+						Hours_Worked[j] = Hours_Worked[j + 1];
+						Hours_Worked[j + 1] = temp1;
+						//sort hours rate(Ascending)
+						temp1 = Hourly_Rate[j];
+						Hourly_Rate[j] = Hourly_Rate[j + 1];
+						Hourly_Rate[j + 1] = temp1;
+						//sort gross salary (Ascending)
+						temp1 = Gross_Salary[j];
+						Gross_Salary[j] = Gross_Salary[j + 1];
+						Gross_Salary[j + 1] = temp1;
+						//sort Tax deduction (Ascending)
+						temp1 = Tax_Deduction[j];
+						Tax_Deduction[j] = Tax_Deduction[j + 1];
+						Tax_Deduction[j + 1] = temp1;
+						int temp = Employee_ID[j];
+						Employee_ID[j] = Employee_ID[j + 1];
+						Employee_ID[j + 1] = temp;
+						//sort net salary(Ascending)
+						temp1 = Net_Salary[j];
+						Net_Salary[j] = Net_Salary[j + 1];
+						Net_Salary[j + 1] = temp1;
+					}
+				}
+			}
+
+			//display the sorted data
+			cout << "Employee id\tHours Worked\tHourly Rate\tGross Salary\tTax Deduction\tNet salary" << endl;
+			for (int j = 0; j < size / 2; j++)
+			{
+				if (Net_Salary[j] < a)
+				{
+					cout << Employee_ID[j] << "\t\t";
+					cout << Hours_Worked[j] << " " << "\t\t";
+					cout << Hourly_Rate[j] << " " << "\t\t";
+					cout << Gross_Salary[j] << " " << "\t\t";
+					cout << Tax_Deduction[j] << " " << "\t\t";
+					cout << Net_Salary[j] << " " << endl;
+				}
+			}
+
+		}
+		else if (ch[0] == '1' && ch[1] == '1' && ch[2] == '\0')
+		{
+			int ID;
+			cout << "Enter a Employee ID=";
+			cin >> ID;
+			bool found = true;
+			for (int i = 0; i < size / 2; i++)
+			{
+				if (Employee_ID[i] == ID)
+				{
+
+					char choice;
+					cout << "Enter h or H to update an hours worked OR Enter r or R to Update Hourly rate=";
+					cin >> choice;
+					if (choice == 'h' || choice == 'H')//checking the choice
+					{
+						cout << "Enter Hours Worked= ";
+						cin >> Hours_Worked[i];
+					}
+					else if (choice == 'r' || choice == 'R')
+					{
+						cout << "Enter Hourly rate=";
+						cin >> Hourly_Rate[i];
+					}
+					Gross_Salary[i] = Hours_Worked[i] * Hourly_Rate[i];
+					Tax_Deduction[i] = Gross_Salary[i] * 0.1;
+					Net_Salary[i] = Gross_Salary[i] - Tax_Deduction[i];
+					cout << "Employee Record Updated Successfully.\n";
+					found = false;
+				}
+			}
+			if (found == true)//if  not present then display this
+			{
+				cout << "Person not found!..." << endl;
+			}
+		}
+		else if (ch[0] == 'e' && ch[1] == '\0')//exit a program.
+		{
+			cout << "Exiting Program!..." << endl;
+		}
+		else if (ch[0] == 'E' && ch[1] == '\0')
+		{
+			cout << "Exiting Program!..." << endl;
+		}
+		else
+		{
+			cout << "Invalid Input!....." << endl;
+		}
+	} while (ch[0] != 'e' && ch[0] != 'E');
+	return 0;
+}
